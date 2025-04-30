@@ -5,7 +5,7 @@ This is a simple **To-Do List** app built with Flutter as part of an interview a
 ---
 ## 📦 Download APK
 
-[Click here to download the latest APK](./release/app-release.apk)
+[Click here to download the latest APK](https://github.com/CodewithAnn/Todo-app-assignment-webreinvent/releases/download/v0.0.1/app-arm64-v8a-release.apk)
 
 ## 📱 Features
 
