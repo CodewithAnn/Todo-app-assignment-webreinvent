@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app_for_webreinvent/models/task.dart';
+import 'package:todo_app_for_webreinvent/providers/task_provider.dart';
 
 class TaskTile extends StatelessWidget {
   final Task task;
   final VoidCallback onToggle;
+ final int index;
 
-  const TaskTile({super.key, required this.task, required this.onToggle});
+  const TaskTile({super.key, required this.task, required this.onToggle, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final taskProvider = Provider.of<TaskProvider>(context, listen: false);
     return Card(
       color: Colors.grey.shade300,
       margin: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
@@ -30,6 +34,32 @@ class TaskTile extends StatelessWidget {
             fontSize: 16,
           ),
         ),
+        trailing: IconButton(onPressed: (){
+          _showDeleteDialog(context, taskProvider);
+        }, icon: Icon(Icons.delete, color: Colors.red,)),
+      ),
+    );
+  }
+  /// method to show Alert Dialog box
+   void _showDeleteDialog(BuildContext context, TaskProvider provider) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Delete Task"),
+        content: const Text("Are you sure you want to delete this task?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(), // cancel
+            child: const Text("No"),
+          ),
+          TextButton(
+            onPressed: () {
+              provider.deleteTask(index);
+              Navigator.of(context).pop(); // close dialog
+            },
+            child: const Text("Yes"),
+          ),
+        ],
       ),
     );
   }

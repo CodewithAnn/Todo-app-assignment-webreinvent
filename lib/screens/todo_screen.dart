@@ -32,6 +32,9 @@ class ToDoScreen extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     controller: _controller,
+                    onTapOutside: (event) {
+                      FocusScope.of(context).unfocus();
+                    },
                     decoration: InputDecoration(
                       hintText: 'Enter Your task...',
                       border: OutlineInputBorder(
@@ -60,6 +63,7 @@ class ToDoScreen extends StatelessWidget {
                       itemCount: provider.tasks.length,
                       itemBuilder: (context, index) {
                         return TaskTile(
+                          index: index,
                           task: provider.tasks[index],
                           onToggle: () => provider.toggleTask(index),
                         );

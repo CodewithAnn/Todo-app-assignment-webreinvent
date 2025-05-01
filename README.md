@@ -10,6 +10,7 @@ This is a simple **To-Do List** app built with Flutter as part of an interview a
 ## 📱 Features
 
 - Add a new task with a title
+- Delete a task
 - Mark a task as completed using a checkbox
 - Display a list of tasks with real-time UI updates
 - Beautiful, responsive Material 3 UI

@@ -16,4 +16,10 @@ class TaskProvider  with ChangeNotifier{
     _tasks[index].isDone = !_tasks[index].isDone;
     notifyListeners();
   }
+
+  /// deleteTask() method clear the task at prvious index added
+  void deleteTask(int index){
+    _tasks.removeAt(index);
+    notifyListeners();
+  }
 }
